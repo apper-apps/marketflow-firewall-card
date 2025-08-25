@@ -79,8 +79,82 @@ export const productService = {
       })
       .sort((a, b) => b.recommendationScore - a.recommendationScore)
       .slice(0, limit)
-      .map(({ recommendationScore, ...product }) => product);
+.map(({ recommendationScore, ...product }) => product);
 
     return recommendations;
+  },
+
+  async getPromotionalBanners() {
+    await delay(200);
+    
+    // Get featured products for promotional banners
+    const featuredProducts = productsData
+      .filter(p => p.rating >= 4.5 && p.inStock)
+      .slice(0, 4);
+
+    const banners = [
+      {
+        id: 1,
+        title: "Summer Electronics Sale",
+        description: "Upgrade your tech with premium wireless headphones featuring noise cancellation and 30-hour battery life.",
+        badge: "Limited Time",
+        discount: 25,
+        price: 299.99,
+        originalPrice: 399.99,
+        backgroundImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop",
+        productImage: featuredProducts[0]?.images[0],
+        primaryButtonText: "Shop Electronics",
+        primaryLink: "/shop?category=Electronics",
+        secondaryButtonText: "View Details",
+        secondaryLink: `/product/${featuredProducts[0]?.Id}`
+      },
+      {
+        id: 2,
+        title: "Kitchen Essentials Collection",
+        description: "Professional-grade kitchen tools and cookware for the home chef. Quality that lasts a lifetime.",
+        badge: "New Arrivals",
+        discount: 20,
+        price: 149.99,
+        originalPrice: 189.99,
+        backgroundImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=600&fit=crop",
+        productImage: featuredProducts[1]?.images[0],
+        primaryButtonText: "Shop Kitchen",
+        primaryLink: "/shop?category=Kitchen",
+        secondaryButtonText: "Learn More",
+        secondaryLink: "/shop"
+      },
+      {
+        id: 3,
+        title: "Home Comfort Sale",
+        description: "Transform your living space with luxurious organic cotton bedding and memory foam comfort.",
+        badge: "Best Sellers",
+        discount: 30,
+        price: 89.99,
+        originalPrice: 119.99,
+        backgroundImage: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&h=600&fit=crop",
+        productImage: featuredProducts[2]?.images[0],
+        primaryButtonText: "Shop Home",
+        primaryLink: "/shop?category=Home",
+        secondaryButtonText: "View Collection",
+        secondaryLink: "/shop"
+      },
+      {
+        id: 4,
+        title: "Fashion Forward Deals",
+        description: "Complete your look with premium leather accessories and designer sunglasses. Style meets quality.",
+        badge: "Trending Now",
+        discount: 15,
+        price: 129.99,
+        originalPrice: 159.99,
+        backgroundImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop",
+        productImage: featuredProducts[3]?.images[0],
+        primaryButtonText: "Shop Fashion",
+        primaryLink: "/shop?category=Fashion",
+        secondaryButtonText: "See Trends",
+        secondaryLink: "/shop"
+      }
+    ];
+
+    return banners;
   }
 };

@@ -4,23 +4,24 @@ import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
 import { wishlistService } from "@/services/api/wishlistService";
+import PromotionalBannerCarousel from "@/components/molecules/PromotionalBannerCarousel";
 import ApperIcon from "@/components/ApperIcon";
 import CategoryCard from "@/components/molecules/CategoryCard";
 import ProductCard from "@/components/molecules/ProductCard";
 import Button from "@/components/atoms/Button";
 import Loading from "@/components/ui/Loading";
-
 const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [deals, setDeals] = useState([]);
+  const [promotionalBanners, setPromotionalBanners] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadHomeData();
   }, []);
 
-  const loadHomeData = async () => {
+const loadHomeData = async () => {
     setLoading(true);
     try {
       const products = await productService.getAll();
@@ -45,9 +46,44 @@ const HomePage = () => {
         .filter(p => p.originalPrice && p.originalPrice > p.price)
         .slice(0, 6);
 
+      // Promotional banners
+      const bannersData = [
+        {
+          id: 1,
+          title: "Summer Sale",
+          subtitle: "Up to 50% Off",
+          description: "Shop the hottest summer trends with massive discounts",
+          image: "/api/placeholder/1200/400",
+          buttonText: "Shop Now",
+          buttonLink: "/shop?sale=summer",
+          backgroundColor: "bg-gradient-to-r from-orange-400 to-pink-500"
+        },
+        {
+          id: 2,
+          title: "New Arrivals",
+          subtitle: "Fresh Collection",
+          description: "Discover the latest products just added to our store",
+          image: "/api/placeholder/1200/400",
+          buttonText: "Explore",
+          buttonLink: "/shop?new=true",
+          backgroundColor: "bg-gradient-to-r from-blue-500 to-purple-600"
+        },
+        {
+          id: 3,
+          title: "Free Shipping",
+          subtitle: "On Orders Over $50",
+          description: "Get your favorite items delivered for free",
+          image: "/api/placeholder/1200/400",
+          buttonText: "Start Shopping",
+          buttonLink: "/shop",
+          backgroundColor: "bg-gradient-to-r from-green-500 to-teal-500"
+        }
+      ];
+
       setFeaturedProducts(featured);
       setCategories(categoryData);
       setDeals(dealsData);
+      setPromotionalBanners(bannersData);
     } catch (error) {
       console.error("Error loading home data:", error);
     } finally {
@@ -189,6 +225,22 @@ const loadWishlistStatus = async () => {
         </section>
 
         {/* Featured Products Section */}
+{/* Promotional Banner Carousel */}
+        <section className="py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <PromotionalBannerCarousel 
+              banners={promotionalBanners}
+              autoRotate={true}
+              interval={6000}
+            />
+          </motion.div>
+        </section>
+
         <section className="py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
