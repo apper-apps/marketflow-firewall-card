@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
-import ProductCard from "@/components/molecules/ProductCard";
+import ProductCarousel from "@/components/molecules/ProductCarousel";
+import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -35,14 +35,11 @@ const ProductDetailPage = () => {
         return;
       }
 
-      setProduct(productData);
+setProduct(productData);
 
-      // Load related products (same category)
-      const allProducts = await productService.getAll();
-      const related = allProducts
-        .filter(p => p.category === productData.category && p.Id !== productData.Id)
-        .slice(0, 4);
-      setRelatedProducts(related);
+// Load recommended products using collaborative filtering
+      const boughtTogether = await productService.getRecommendations(id, 'bought', 8);
+      setRelatedProducts(boughtTogether);
     } catch (err) {
       setError("Failed to load product details");
     } finally {
@@ -320,22 +317,13 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
-        {/* Related Products */}
+{/* Recommended Products Carousel */}
         {relatedProducts.length > 0 && (
-          <div>
-            <h2 className="font-display font-bold text-2xl lg:text-3xl text-gray-900 mb-8">
-              Related Products
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((relatedProduct) => (
-                <ProductCard
-                  key={relatedProduct.Id}
-                  product={relatedProduct}
-                  onAddToCart={handleRelatedProductAddToCart}
-                />
-              ))}
-            </div>
-          </div>
+          <ProductCarousel
+            products={relatedProducts}
+            onAddToCart={handleRelatedProductAddToCart}
+            title="Customers who bought this item also bought"
+          />
         )}
       </div>
     </div>
