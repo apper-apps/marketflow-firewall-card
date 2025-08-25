@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { orderService } from "@/services/api/orderService";
-import Button from "@/components/atoms/Button";
+import { productService } from "@/services/api/productService";
+import OrderTrackingTimeline from "@/components/molecules/OrderTrackingTimeline";
 import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 import Loading from "@/components/ui/Loading";
-
 const OrderConfirmationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -122,10 +123,18 @@ const OrderConfirmationPage = () => {
                   <span className="text-gray-600">Order Date</span>
                   <span className="font-medium text-gray-900">{formatDate(order.date)}</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+<div className="flex justify-between items-center py-2 border-b border-gray-100">
                   <span className="text-gray-600">Status</span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-warning/20 to-yellow-200 text-warning">
-                    Processing
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                    order.status === 'delivered' 
+                      ? 'bg-gradient-to-r from-success/20 to-green-200 text-success'
+                      : order.status === 'shipped'
+                      ? 'bg-gradient-to-r from-primary/20 to-orange-200 text-primary'
+                      : order.status === 'processing'
+                      ? 'bg-gradient-to-r from-info/20 to-blue-200 text-info'
+                      : 'bg-gradient-to-r from-warning/20 to-yellow-200 text-warning'
+                  }`}>
+                    {order.status?.charAt(0).toUpperCase() + order.status?.slice(1) || 'Processing'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-gray-100">
@@ -168,9 +177,19 @@ const OrderConfirmationPage = () => {
                 </div>
               </div>
             </div>
+</motion.div>
+        )}
+{/* Order Tracking Timeline */}
+        {order && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8"
+          >
+            <OrderTrackingTimeline order={order} />
           </motion.div>
         )}
-
         {/* Order Items */}
         {order && order.items && (
           <motion.div

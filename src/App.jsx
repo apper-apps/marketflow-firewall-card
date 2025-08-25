@@ -10,7 +10,7 @@ import ProductDetailPage from "@/components/pages/ProductDetailPage";
 import CartPage from "@/components/pages/CartPage";
 import CheckoutPage from "@/components/pages/CheckoutPage";
 import OrderConfirmationPage from "@/components/pages/OrderConfirmationPage";
-
+import OrderHistoryPage from "@/components/pages/OrderHistoryPage";
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
@@ -51,6 +51,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/wishlist" element={<ShopPage />} />
             <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>
         </main>
 
