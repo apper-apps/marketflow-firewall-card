@@ -7,10 +7,11 @@ import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import ApperIcon from "@/components/ApperIcon";
-
+import ProductQuickViewModal from "@/components/molecules/ProductQuickViewModal";
 const ProductCard = ({ product, onAddToCart }) => {
   const navigate = useNavigate();
-  const [isInWishlist, setIsInWishlist] = useState(false);
+const [isInWishlist, setIsInWishlist] = useState(false);
+  const [showQuickView, setShowQuickView] = useState(false);
 
   useEffect(() => {
     checkWishlistStatus();
@@ -49,8 +50,12 @@ const ProductCard = ({ product, onAddToCart }) => {
     }
   };
 
-  const handleCardClick = () => {
-    navigate(`/product/${product.Id}`);
+const handleCardClick = () => {
+    setShowQuickView(true);
+  };
+
+  const handleQuickViewClose = () => {
+    setShowQuickView(false);
   };
 
   const formatPrice = (price) => {
@@ -87,11 +92,14 @@ const ProductCard = ({ product, onAddToCart }) => {
     return stars;
   };
 
-  return (
-    <Card 
-      className="cursor-pointer group overflow-hidden h-full flex flex-col"
-      onClick={handleCardClick}
->
+return (
+    <>
+      <Card 
+        className="cursor-pointer group overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300"
+        onClick={handleCardClick}
+        onMouseEnter={() => setShowQuickView(true)}
+        onMouseLeave={() => setShowQuickView(false)}
+      >
       {/* Wishlist Heart Icon */}
       <button
         onClick={handleWishlistToggle}
@@ -191,7 +199,14 @@ const ProductCard = ({ product, onAddToCart }) => {
           </Button>
         </div>
       </div>
-    </Card>
+</Card>
+
+      <ProductQuickViewModal
+        product={product}
+        isOpen={showQuickView}
+        onClose={handleQuickViewClose}
+      />
+    </>
   );
 };
 

@@ -103,3 +103,64 @@ h1, h2, h3, h4, h5, h6 {
 .cart-badge-animate {
   animation: bounceIn 0.5s ease-out;
 }
+
+/* Modal and Overlay Styles */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Quick View Modal Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-enter {
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.backdrop-enter {
+  animation: backdropFadeIn 0.2s ease-out;
+}
+
+/* Text line clamping utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Z-index layers for proper stacking */
+.z-modal {
+  z-index: 9999;
+}
+
+.z-dropdown {
+  z-index: 50;
+}
+
+.z-header {
+  z-index: 40;
+}
