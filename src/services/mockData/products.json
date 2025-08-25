@@ -1,0 +1,347 @@
+[
+  {
+    "Id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "description": "Premium noise-canceling wireless headphones with 30-hour battery life. Experience crystal-clear audio quality with deep bass and comfortable over-ear design perfect for long listening sessions.",
+    "price": 299.99,
+    "originalPrice": 399.99,
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=500&h=400&fit=crop"
+    ],
+    "category": "Electronics",
+    "rating": 4.8,
+    "reviewCount": 2847,
+    "inStock": true,
+    "specifications": {
+      "brand": "AudioTech Pro",
+      "type": "Over-ear",
+      "connectivity": "Bluetooth 5.0",
+      "batteryLife": "30 hours",
+      "noiseCancellation": "Active",
+      "weight": "280g"
+    }
+  },
+  {
+    "Id": 2,
+    "title": "Smart Fitness Tracker Watch",
+    "description": "Advanced fitness tracker with heart rate monitoring, GPS, and waterproof design. Track your workouts, sleep patterns, and daily activities with precision and style.",
+    "price": 199.99,
+    "originalPrice": 249.99,
+    "images": [
+      "https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?w=500&h=400&fit=crop"
+    ],
+    "category": "Electronics",
+    "rating": 4.6,
+    "reviewCount": 1923,
+    "inStock": true,
+    "specifications": {
+      "display": "1.4 inch AMOLED",
+      "batteryLife": "7 days",
+      "waterRating": "5ATM",
+      "sensors": "Heart rate, GPS, Accelerometer",
+      "compatibility": "iOS, Android"
+    }
+  },
+  {
+    "Id": 3,
+    "title": "Professional Chef's Knife Set",
+    "description": "High-quality stainless steel knife set with ergonomic handles. Includes chef's knife, paring knife, utility knife, and wooden block storage for the professional home cook.",
+    "price": 149.99,
+    "images": [
+      "https://images.unsplash.com/photo-1594736797933-d0b22d3180b4?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1563454151465-7f4d4f3a7f6a?w=500&h=400&fit=crop"
+    ],
+    "category": "Kitchen",
+    "rating": 4.9,
+    "reviewCount": 756,
+    "inStock": true,
+    "specifications": {
+      "material": "High-carbon stainless steel",
+      "pieces": "7-piece set",
+      "handleMaterial": "Ergonomic polymer",
+      "maintenance": "Dishwasher safe",
+      "storage": "Bamboo block included"
+    }
+  },
+  {
+    "Id": 4,
+    "title": "Organic Cotton Bed Sheet Set",
+    "description": "Luxuriously soft organic cotton sheets with deep pockets and fade-resistant colors. Hypoallergenic and breathable for the perfect night's sleep.",
+    "price": 89.99,
+    "originalPrice": 119.99,
+    "images": [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=400&fit=crop"
+    ],
+    "category": "Home",
+    "rating": 4.7,
+    "reviewCount": 1245,
+    "inStock": true,
+    "specifications": {
+      "material": "100% Organic Cotton",
+      "threadCount": "300 TC",
+      "fitsMattress": "Up to 16 inches deep",
+      "care": "Machine washable",
+      "certification": "GOTS certified organic"
+    }
+  },
+  {
+    "Id": 5,
+    "title": "Wireless Charging Phone Stand",
+    "description": "Sleek wireless charging station with adjustable viewing angles. Compatible with all Qi-enabled devices and features LED charging indicators.",
+    "price": 49.99,
+    "images": [
+      "https://images.unsplash.com/photo-1609592282213-99496eaea83f?w=500&h=400&fit=crop"
+    ],
+    "category": "Electronics",
+    "rating": 4.4,
+    "reviewCount": 892,
+    "inStock": true,
+    "specifications": {
+      "charging": "10W Fast Charging",
+      "compatibility": "Qi-enabled devices",
+      "angles": "Adjustable 0-60 degrees",
+      "safety": "Over-temperature protection",
+      "material": "Aluminum alloy"
+    }
+  },
+  {
+    "Id": 6,
+    "title": "Premium Leather Crossbody Bag",
+    "description": "Handcrafted genuine leather crossbody bag with multiple compartments. Perfect for daily use with elegant design and durable construction.",
+    "price": 129.99,
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=400&fit=crop"
+    ],
+    "category": "Fashion",
+    "rating": 4.8,
+    "reviewCount": 634,
+    "inStock": true,
+    "specifications": {
+      "material": "Genuine cowhide leather",
+      "dimensions": "10 x 8 x 3 inches",
+      "strap": "Adjustable 28-52 inches",
+      "pockets": "3 interior, 2 exterior",
+      "closure": "Magnetic flap"
+    }
+  },
+  {
+    "Id": 7,
+    "title": "Stainless Steel Water Bottle",
+    "description": "Double-wall insulated water bottle that keeps drinks cold for 24 hours or hot for 12 hours. BPA-free with leak-proof design.",
+    "price": 34.99,
+    "images": [
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=400&fit=crop"
+    ],
+    "category": "Sports",
+    "rating": 4.6,
+    "reviewCount": 1567,
+    "inStock": true,
+    "specifications": {
+      "capacity": "32 oz (946ml)",
+      "material": "18/8 stainless steel",
+      "insulation": "Double-wall vacuum",
+      "cap": "Leak-proof sport cap",
+      "coldRetention": "24 hours",
+      "hotRetention": "12 hours"
+    }
+  },
+  {
+    "Id": 8,
+    "title": "Ergonomic Office Chair",
+    "description": "Professional ergonomic office chair with lumbar support, adjustable height, and breathable mesh back. Designed for long hours of comfortable seating.",
+    "price": 299.99,
+    "originalPrice": 399.99,
+    "images": [
+      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1541558869434-2840d308329a?w=500&h=400&fit=crop"
+    ],
+    "category": "Office",
+    "rating": 4.5,
+    "reviewCount": 943,
+    "inStock": false,
+    "specifications": {
+      "seatHeight": "Adjustable 17-21 inches",
+      "weightLimit": "300 lbs",
+      "armrests": "Adjustable",
+      "backSupport": "Lumbar support",
+      "material": "Breathable mesh",
+      "warranty": "5 years"
+    }
+  },
+  {
+    "Id": 9,
+    "title": "Wireless Mouse with RGB Lighting",
+    "description": "Gaming-grade wireless mouse with customizable RGB lighting and high-precision sensor. Perfect for gaming and professional use.",
+    "price": 79.99,
+    "images": [
+      "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=400&fit=crop"
+    ],
+    "category": "Electronics",
+    "rating": 4.7,
+    "reviewCount": 1123,
+    "inStock": true,
+    "specifications": {
+      "sensor": "16000 DPI optical",
+      "batteryLife": "70 hours",
+      "buttons": "7 programmable",
+      "connectivity": "2.4GHz wireless",
+      "lighting": "RGB customizable",
+      "weight": "85g"
+    }
+  },
+  {
+    "Id": 10,
+    "title": "Ceramic Non-Stick Frying Pan",
+    "description": "Professional-grade ceramic non-stick frying pan with even heat distribution. PFOA-free and safe for all cooking surfaces including induction.",
+    "price": 59.99,
+    "images": [
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop"
+    ],
+    "category": "Kitchen",
+    "rating": 4.4,
+    "reviewCount": 812,
+    "inStock": true,
+    "specifications": {
+      "size": "12 inch diameter",
+      "coating": "Ceramic non-stick",
+      "base": "Aluminum with steel base",
+      "compatibility": "All cooking surfaces",
+      "ovenSafe": "Up to 400°F",
+      "care": "Hand wash recommended"
+    }
+  },
+  {
+    "Id": 11,
+    "title": "Memory Foam Pillow",
+    "description": "Contoured memory foam pillow with cooling gel layer. Provides optimal neck and spine alignment for better sleep quality.",
+    "price": 69.99,
+    "originalPrice": 89.99,
+    "images": [
+      "https://images.unsplash.com/photo-1586047844297-66f5e3a2c17a?w=500&h=400&fit=crop"
+    ],
+    "category": "Home",
+    "rating": 4.6,
+    "reviewCount": 1456,
+    "inStock": true,
+    "specifications": {
+      "fill": "Memory foam with cooling gel",
+      "cover": "Bamboo-derived viscose",
+      "size": "Standard 24x16 inches",
+      "firmness": "Medium-firm",
+      "hypoallergenic": "Yes",
+      "washable": "Removable cover"
+    }
+  },
+  {
+    "Id": 12,
+    "title": "Portable Bluetooth Speaker",
+    "description": "Compact waterproof Bluetooth speaker with 360-degree sound and 20-hour battery life. Perfect for outdoor adventures and home use.",
+    "price": 89.99,
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=400&fit=crop"
+    ],
+    "category": "Electronics",
+    "rating": 4.5,
+    "reviewCount": 967,
+    "inStock": true,
+    "specifications": {
+      "batteryLife": "20 hours",
+      "waterRating": "IPX7 waterproof",
+      "connectivity": "Bluetooth 5.0",
+      "range": "100 feet",
+      "sound": "360-degree audio",
+      "size": "7.9 x 3.7 inches"
+    }
+  },
+  {
+    "Id": 13,
+    "title": "Yoga Mat with Alignment Lines",
+    "description": "Premium yoga mat with alignment guides and superior grip. Made from eco-friendly materials with extra thickness for comfort.",
+    "price": 49.99,
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=400&fit=crop"
+    ],
+    "category": "Sports",
+    "rating": 4.7,
+    "reviewCount": 723,
+    "inStock": true,
+    "specifications": {
+      "thickness": "6mm",
+      "material": "Natural rubber",
+      "size": "72 x 24 inches",
+      "features": "Alignment lines",
+      "grip": "Non-slip surface",
+      "ecoFriendly": "Biodegradable materials"
+    }
+  },
+  {
+    "Id": 14,
+    "title": "Smart LED Desk Lamp",
+    "description": "Adjustable LED desk lamp with wireless charging base and multiple lighting modes. Perfect for studying, working, and reading.",
+    "price": 119.99,
+    "images": [
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&h=400&fit=crop"
+    ],
+    "category": "Office",
+    "rating": 4.6,
+    "reviewCount": 834,
+    "inStock": true,
+    "specifications": {
+      "lightModes": "5 brightness levels, 3 color temps",
+      "charging": "Wireless charging base",
+      "adjustment": "Multi-angle positioning",
+      "powerSource": "USB-C or AC adapter",
+      "controls": "Touch sensitive",
+      "eyeCare": "Flicker-free LED"
+    }
+  },
+  {
+    "Id": 15,
+    "title": "Designer Sunglasses",
+    "description": "Stylish designer sunglasses with polarized lenses and UV400 protection. Classic frame design suitable for all face shapes.",
+    "price": 159.99,
+    "originalPrice": 199.99,
+    "images": [
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&h=400&fit=crop"
+    ],
+    "category": "Fashion",
+    "rating": 4.8,
+    "reviewCount": 456,
+    "inStock": true,
+    "specifications": {
+      "lenses": "Polarized UV400",
+      "frame": "Lightweight metal",
+      "style": "Classic aviator",
+      "protection": "100% UV protection",
+      "included": "Hard case, cleaning cloth",
+      "warranty": "2 years"
+    }
+  },
+  {
+    "Id": 16,
+    "title": "Electric Coffee Grinder",
+    "description": "Professional electric coffee grinder with multiple grind settings. Stainless steel blades and removable cup for easy cleaning.",
+    "price": 79.99,
+    "images": [
+      "https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=500&h=400&fit=crop"
+    ],
+    "category": "Kitchen",
+    "rating": 4.5,
+    "reviewCount": 672,
+    "inStock": true,
+    "specifications": {
+      "capacity": "70g bean hopper",
+      "grindSettings": "18 settings",
+      "blades": "Stainless steel burr",
+      "motor": "150W powerful motor",
+      "safety": "Safety lock lid",
+      "cleanup": "Removable grinding cup"
+    }
+  }
+]
