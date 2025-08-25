@@ -47,8 +47,9 @@ function App() {
             <Route path="/deals" element={<ShopPage />} />
             <Route path="/categories" element={<ShopPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
-            <Route path="/cart" element={<CartPage />} />
+<Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/wishlist" element={<ShopPage />} />
             <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           </Routes>
         </main>

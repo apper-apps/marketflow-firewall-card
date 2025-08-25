@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
-import ProductCard from "@/components/molecules/ProductCard";
-import CategoryCard from "@/components/molecules/CategoryCard";
-import Button from "@/components/atoms/Button";
+import { wishlistService } from "@/services/api/wishlistService";
 import ApperIcon from "@/components/ApperIcon";
+import CategoryCard from "@/components/molecules/CategoryCard";
+import ProductCard from "@/components/molecules/ProductCard";
+import Button from "@/components/atoms/Button";
 import Loading from "@/components/ui/Loading";
 
 const HomePage = () => {
@@ -61,7 +62,19 @@ const HomePage = () => {
       console.error("Error adding to cart:", error);
     }
   };
-
+const loadWishlistStatus = async () => {
+    try {
+      const wishlist = await wishlistService.getAll();
+      const wishlistProductIds = wishlist.map(item => item.productId);
+      
+      setFeaturedProducts(prev => prev.map(product => ({
+        ...product,
+        isInWishlist: wishlistProductIds.includes(product.Id)
+      })));
+    } catch (error) {
+      console.error("Error loading wishlist status:", error);
+    }
+  };
   if (loading) {
     return (
       <div className="min-h-screen bg-background">

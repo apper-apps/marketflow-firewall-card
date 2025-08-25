@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
+import { wishlistService } from "@/services/api/wishlistService";
 import ProductCard from "@/components/molecules/ProductCard";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
@@ -36,7 +37,19 @@ const ProductGrid = ({ filters, sortBy, searchQuery }) => {
       setLoading(false);
     }
   };
-
+const loadWishlistStatus = async () => {
+    try {
+      const wishlist = await wishlistService.getAll();
+      const wishlistProductIds = wishlist.map(item => item.productId);
+      
+      setFilteredProducts(prev => prev.map(product => ({
+        ...product,
+        isInWishlist: wishlistProductIds.includes(product.Id)
+      })));
+    } catch (error) {
+      console.error("Error loading wishlist status:", error);
+    }
+  };
   const applyFiltersAndSort = () => {
     let filtered = [...products];
 
