@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { cartService } from "@/services/api/cartService";
-import Header from "@/components/organisms/Header";
-import Footer from "@/components/organisms/Footer";
-import HomePage from "@/components/pages/HomePage";
-import ShopPage from "@/components/pages/ShopPage";
-import ProductDetailPage from "@/components/pages/ProductDetailPage";
-import CartPage from "@/components/pages/CartPage";
+import AllProductsPage from "@/components/pages/AllProductsPage";
+import CategoriesPage from "@/components/pages/CategoriesPage";
+import DealsPage from "@/components/pages/DealsPage";
 import CheckoutPage from "@/components/pages/CheckoutPage";
 import OrderConfirmationPage from "@/components/pages/OrderConfirmationPage";
+import ProductDetailPage from "@/components/pages/ProductDetailPage";
+import HomePage from "@/components/pages/HomePage";
 import OrderHistoryPage from "@/components/pages/OrderHistoryPage";
+import CartPage from "@/components/pages/CartPage";
+import Footer from "@/components/organisms/Footer";
+import Header from "@/components/organisms/Header";
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
@@ -41,15 +43,15 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/search" element={<ShopPage />} />
-            <Route path="/category/:category" element={<ShopPage />} />
-            <Route path="/deals" element={<ShopPage />} />
-            <Route path="/categories" element={<ShopPage />} />
+<Route path="/shop" element={<AllProductsPage />} />
+            <Route path="/search" element={<AllProductsPage />} />
+            <Route path="/category/:category" element={<AllProductsPage />} />
+            <Route path="/deals" element={<DealsPage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
 <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/wishlist" element={<ShopPage />} />
+            <Route path="/wishlist" element={<AllProductsPage />} />
             <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>
