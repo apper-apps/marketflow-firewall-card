@@ -6,17 +6,19 @@ import Input from "@/components/atoms/Input";
 const SearchBar = ({ onSearch, placeholder = "Search products...", className }) => {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleInputChange = (e) => {
+    setQuery(e.target.value);
+    // Trigger search for any input change if onSearch is provided
     if (onSearch) {
-      onSearch(query);
+      onSearch(e.target.value);
     }
   };
 
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
-    if (onSearch && e.target.value.length > 2) {
-      onSearch(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Trigger search immediately on form submission (Enter key)
+    if (onSearch && query.trim()) {
+      onSearch(query.trim());
     }
   };
 
