@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
@@ -21,8 +21,9 @@ const ProductGrid = ({ filters, sortBy, searchQuery }) => {
     loadProducts();
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
     applyFiltersAndSort();
+    loadWishlistStatus();
   }, [products, filters, sortBy, searchQuery]);
 
   const loadProducts = async () => {
@@ -37,7 +38,7 @@ const ProductGrid = ({ filters, sortBy, searchQuery }) => {
       setLoading(false);
     }
   };
-const loadWishlistStatus = async () => {
+const loadWishlistStatus = useCallback(async () => {
     try {
       const wishlist = await wishlistService.getAll();
       const wishlistProductIds = wishlist.map(item => item.productId);
@@ -49,8 +50,8 @@ const loadWishlistStatus = async () => {
     } catch (error) {
       console.error("Error loading wishlist status:", error);
     }
-  };
-  const applyFiltersAndSort = () => {
+  }, []);
+const applyFiltersAndSort = useCallback(() => {
     let filtered = [...products];
 
     // Apply search query
@@ -109,7 +110,7 @@ const loadWishlistStatus = async () => {
     }
 
     setFilteredProducts(filtered);
-  };
+}, [products, filters, sortBy, searchQuery]);
 
   const handleAddToCart = async (product) => {
     try {

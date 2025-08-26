@@ -16,9 +16,9 @@ const FilterSidebar = ({ onFiltersChange, isOpen, onClose }) => {
     loadCategories();
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
     onFiltersChange(filters);
-  }, [filters, onFiltersChange]);
+  }, [filters]);
 
   const loadCategories = async () => {
     try {

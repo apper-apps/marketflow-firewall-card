@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import ProductGrid from "@/components/organisms/ProductGrid";
 import FilterSidebar from "@/components/organisms/FilterSidebar";
@@ -17,10 +17,10 @@ const DealsPage = () => {
   const [sortBy, setSortBy] = useState("discount");
   const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false);
 
-  const handleFiltersChange = (newFilters) => {
+const handleFiltersChange = useCallback((newFilters) => {
     // Ensure onSale filter is always true for deals page
     setFilters({ ...newFilters, onSale: true });
-  };
+  }, []);
 
   const sortOptions = [
     { value: "discount", label: "Biggest Discount" },

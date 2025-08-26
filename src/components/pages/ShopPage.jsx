@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import ProductGrid from "@/components/organisms/ProductGrid";
 import FilterSidebar from "@/components/organisms/FilterSidebar";
@@ -41,9 +41,9 @@ const ShopPage = () => {
     { value: "name", label: "Name A-Z" }
   ];
 
-  const handleFiltersChange = (newFilters) => {
+const handleFiltersChange = useCallback((newFilters) => {
     setFilters(newFilters);
-};
+  }, []);
 
   // Get page title based on type
   const getPageTitle = () => {
