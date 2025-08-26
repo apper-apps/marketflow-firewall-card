@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { productService } from "@/services/api/productService";
 import { cartService } from "@/services/api/cartService";
+import { wishlistService } from "@/services/api/wishlistService";
 import ProductCarousel from "@/components/molecules/ProductCarousel";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
@@ -19,7 +20,8 @@ const ProductDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+const [quantity, setQuantity] = useState(1);
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
     loadProductData();
@@ -34,8 +36,11 @@ const ProductDetailPage = () => {
         setError("Product not found");
         return;
       }
-
 setProduct(productData);
+
+// Check wishlist status
+      const inWishlist = await wishlistService.isInWishlist(parseInt(id));
+      setIsInWishlist(inWishlist);
 
 // Load recommended products using collaborative filtering
       const boughtTogether = await productService.getRecommendations(id, 'bought', 8);
@@ -71,6 +76,21 @@ setProduct(productData);
       toast.success(`${relatedProduct.title} added to cart!`);
     } catch (error) {
       toast.error("Failed to add item to cart");
+    }
+  };
+const handleWishlistToggle = async () => {
+    try {
+      const newStatus = await wishlistService.toggleWishlist(product.Id);
+      setIsInWishlist(newStatus);
+      
+      if (newStatus) {
+        toast.success("Added to wishlist!");
+      } else {
+        toast.info("Removed from wishlist");
+      }
+    } catch (error) {
+      console.error("Error toggling wishlist:", error);
+      toast.error("Failed to update wishlist");
     }
   };
 
@@ -241,7 +261,7 @@ setProduct(productData);
             )}
 
             {/* Quantity and Actions */}
-            <div className="space-y-4 pt-6 border-t border-gray-200">
+<div className="space-y-4 pt-6 border-t border-gray-200">
               <div className="flex items-center gap-4">
                 <label className="font-medium text-gray-900">Quantity:</label>
                 <div className="flex items-center border border-gray-300 rounded-lg">
@@ -263,6 +283,28 @@ setProduct(productData);
                     <ApperIcon name="Plus" size={16} />
                   </button>
                 </div>
+              </div>
+
+              {/* Wishlist Button */}
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={handleWishlistToggle}
+                  className="flex items-center gap-2 px-4 py-2 border-2 hover:bg-gray-50 transition-all duration-200"
+                >
+                  <ApperIcon
+                    name="Heart"
+                    size={18}
+                    className={`transition-colors duration-200 ${
+                      isInWishlist 
+                        ? "text-red-500 fill-red-500" 
+                        : "text-gray-400 hover:text-red-400"
+                    }`}
+                    fill={isInWishlist ? "currentColor" : "none"}
+                  />
+                  {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                </Button>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">

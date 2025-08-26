@@ -11,6 +11,7 @@ import ProductDetailPage from "@/components/pages/ProductDetailPage";
 import HomePage from "@/components/pages/HomePage";
 import OrderHistoryPage from "@/components/pages/OrderHistoryPage";
 import CartPage from "@/components/pages/CartPage";
+import WishlistPage from "@/components/pages/WishlistPage";
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
 function App() {
@@ -51,7 +52,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
 <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/wishlist" element={<AllProductsPage />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>

@@ -13,10 +13,11 @@ const Header = ({ cartCount = 0 }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navigation = [
+const navigation = [
     { name: "Shop All", href: "/shop", icon: "Store" },
     { name: "Categories", href: "/categories", icon: "Grid3x3" },
-    { name: "Deals", href: "/deals", icon: "Percent" }
+    { name: "Deals", href: "/deals", icon: "Percent" },
+    { name: "Wishlist", href: "/wishlist", icon: "Heart" }
   ];
 
   const handleSearch = (query) => {
@@ -46,7 +47,7 @@ const Header = ({ cartCount = 0 }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+<nav className="hidden lg:flex items-center space-x-6">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -69,7 +70,7 @@ const Header = ({ cartCount = 0 }) => {
             </div>
 
             {/* Right Actions */}
-            <div className="flex items-center space-x-4">
+<div className="flex items-center space-x-3">
               {/* Cart */}
               <div className="relative">
                 <Button
