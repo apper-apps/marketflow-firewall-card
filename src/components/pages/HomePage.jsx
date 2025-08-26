@@ -167,16 +167,18 @@ const loadWishlistStatus = async () => {
               <Button
                 variant="secondary"
                 size="xl"
-                onClick={() => window.location.href = "/shop"}
+as={Link}
+                to="/shop"
                 className="bg-white text-primary hover:bg-gray-50 shadow-xl transform hover:scale-105"
               >
                 <ApperIcon name="ShoppingBag" size={24} className="mr-3" />
                 Shop Now
               </Button>
               <Button
-                variant="outline"
+variant="outline"
                 size="xl"
-                onClick={() => window.location.href = "/deals"}
+                as={Link}
+                to="/deals"
                 className="border-white text-white hover:bg-white hover:text-primary shadow-xl transform hover:scale-105"
               >
                 <ApperIcon name="Percent" size={24} className="mr-3" />

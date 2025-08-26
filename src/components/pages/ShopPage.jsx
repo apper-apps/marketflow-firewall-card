@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useLocation } from "react-router-dom";
 import ProductGrid from "@/components/organisms/ProductGrid";
 import FilterSidebar from "@/components/organisms/FilterSidebar";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
-
 const ShopPage = () => {
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const [filters, setFilters] = useState({
     category: "all",
     priceRange: [0, 1000],
@@ -17,6 +17,20 @@ const ShopPage = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const searchQuery = searchParams.get("q") || "";
+  
+  // Determine page type from pathname
+  const pageType = location.pathname === "/categories" ? "categories" 
+                 : location.pathname === "/deals" ? "deals" 
+                 : "shop";
+
+  // Update filters based on page type
+  useEffect(() => {
+    if (pageType === "deals") {
+      setFilters(prev => ({ ...prev, onSale: true }));
+    } else if (pageType === "categories") {
+      // Categories view will be handled by ProductGrid
+    }
+  }, [pageType]);
 
   const sortOptions = [
     { value: "featured", label: "Featured" },
@@ -29,6 +43,21 @@ const ShopPage = () => {
 
   const handleFiltersChange = (newFilters) => {
     setFilters(newFilters);
+};
+
+  // Get page title based on type
+  const getPageTitle = () => {
+    if (searchQuery) return `Search Results for "${searchQuery}"`;
+    if (pageType === "categories") return "Browse Categories";
+    if (pageType === "deals") return "Special Deals & Offers";
+    return "Shop All Products";
+  };
+
+  const getPageDescription = () => {
+    if (searchQuery) return `Found products matching "${searchQuery}"`;
+    if (pageType === "categories") return "Explore our product categories";
+    if (pageType === "deals") return "Don't miss out on these amazing deals";
+    return "Discover our full collection of products";
   };
 
   return (
@@ -39,8 +68,11 @@ const ShopPage = () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <h1 className="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-2">
-                {searchQuery ? `Search Results for "${searchQuery}"` : "Shop All Products"}
+                {getPageTitle()}
               </h1>
+              <p className="text-gray-600 text-lg">
+                {getPageDescription()}
+              </p>
               <p className="text-gray-600">
                 Discover amazing products at unbeatable prices
               </p>
@@ -100,10 +132,11 @@ const ShopPage = () => {
 
           {/* Product Grid */}
           <div className="flex-1">
-            <ProductGrid
+<ProductGrid
               filters={filters}
               sortBy={sortBy}
               searchQuery={searchQuery}
+              pageType={pageType}
             />
           </div>
         </div>
